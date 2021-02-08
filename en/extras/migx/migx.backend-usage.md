@@ -8,7 +8,7 @@ _old_uri: "revo/migx/migx.backend-usage"
 
 ## How the MIGX Custom Template Variable (TV) Works
 
-The MIGX TV allows you to store complex data items as one TV. These data items are stored as JSON. This documentation page assumes that you have a working knowledge of JSON.
+The MIGX TV allows you to store complex data items as one TV. These data items are stored as JSON. If you are not familiar with JSON or haven't worked with it before, you can read up on it [here](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
 
 Each complex data item can have multiple fields associated with it. These fields can be (almost) any standard or custom MODX TV input type. These data items are defined in the "Form Tabs" field. Items can be sorted by tabs as defined by the JSON.
 
@@ -16,15 +16,15 @@ Each complex data item can have multiple fields associated with it. These fields
 
 Sample MIGX configurations are stored under /core/components/migx/examples/. We will be referring to "tabs.txt" for this documentation page. This documentation page assumes that you have the add-on TinyMCE installed.
 
-tabs.txt shows a sample implementation of a simple image gallery. The image gallery will consist of one complex data item that uses one richtext field (an image description), one image field (the image itself), and a short string (a caption). This short string will not be stored in a separate TV.
+The file tabs.txt shows a sample implementation of a simple image gallery. The image gallery will consist of one complex data item that uses one richtext field (an image description), one image field (the image itself), and a short string (a caption). This short string will not be stored in a separate TV.
 
 "Helper" TVs still work but are no longer needed; use inputTVtype: instead of inputTV:
 
 ### Step 1: Create the MIGX aggregate TV
 
-- fill in a name, caption, description, and category as you would for any other TV
-- give the template access for which you would like to add data items. In this example, perhaps "Gallery"
-- select MIGX as the input type
+- Fill in a name, caption, description, and category as you would for any other TV.
+- Give the template access for which you would like to add data items. In this example, perhaps "Gallery".
+- Select MIGX as the input type.
 
 ### Step 2: Configure the MIGX input type
 
@@ -57,8 +57,7 @@ Content of tabs.txt:
       "caption": "Image",
       "inputTVtype": "image"
     }]
-  }
-]
+}]
 ```
 
 That's a lot of JSON -- let's break it down. The first key you see is entitled "Caption". This refers to the name of the first tab. The tab will be labeled "Info".
@@ -75,9 +74,9 @@ We are now halfway done with our first MIGX TV. We have now created the form for
 
 | Key         | Description                                                                                                                                                                                                                                                                                                                        |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| field       | this is the name for your placeholder to use with getImageList and a template                                                                                                                                                                                                                                                      |
-| caption     | this will be the caption in your form for the end user to see                                                                                                                                                                                                                                                                      |
-| description | this is the description in your form, if empty MIGX will use the description of the inputTV, if any                                                                                                                                                                                                                                |
+| field       | This is the name for your placeholder to use with getImageList and a template                                                                                                                                                                                                                                                      |
+| caption     | This will be the caption in your form for the end user to see                                                                                                                                                                                                                                                                      |
+| description | This is the description in your form, if empty MIGX will use the description of the inputTV, if any                                                                                                                                                                                                                                |
 | inputTV     | Pick either this or "inputTVtype". If you use this, specify the name of the TV that you would like to use. This is useful if your data type requires any custom functionality (ie, a default value, output options, etc). You can use the same input TV for different fields (ie, if you have an object that has multiple images). |
 | inputTVtype | Pick either this or "inputTV". If you use this, specify the name of the TV type that you would like to use. This is useful if your data type does not require any custom functionality.                                                                                                                                            |
 
@@ -88,8 +87,7 @@ In the grid columns, we're specifying the summary view that users will see to vi
 Content of columns.txt:
 
 ``` json
-[
-{
+[{
   "header": "Title",
   "width": "160",
   "sortable": "true",
@@ -119,10 +117,10 @@ The keys for this grid are listed here:
 
 | Key       | Description                                                                                                                                                                                    |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| header    | the caption of the column                                                                                                                                                                      |
-| sortable  | if the columns is sortable by clicking the header                                                                                                                                              |
-| dataIndex | the field, you want to render into this column                                                                                                                                                 |
-| renderer  | you can use a renderer for each column. For example the included function "this.renderImage". This will render an image-preview in the grid-cell, if you are using an image-TV for this field. |
+| header    | The caption of the column                                                                                                                                                                      |
+| sortable  | If the columns is sortable by clicking the header                                                                                                                                              |
+| dataIndex | The field, you want to render into this column                                                                                                                                                 |
+| renderer  | You can use a renderer for each column. For example the included function "this.renderImage". This will render an image-preview in the grid-cell, if you are using an image-TV for this field. |
 
 ## Advanced MIGX Configuration
 
@@ -183,14 +181,14 @@ Content of switchFormTabs.txt
 ]
 ```
 
-here we have an additional outer array with two keys.
+Here we have an additional outer array with two keys.
 
 | key      | description                                                                                                       |
 | -------- | ----------------------------------------------------------------------------------------------------------------- |
-| formname | give each form an unique name. This is the value, which you will see in the generated dropdown to switch the form |
-| formtabs | this are the formtabs for this form                                                                               |
+| formname | Give each form an unique name. This is the value, which you will see in the generated dropdown to switch the form |
+| formtabs | This are the formtabs for this form                                                                               |
 
-when using multiple forms this will produce an additional field with name 'MIGX\_formname'.
+When using multiple forms this will produce an additional field with name 'MIGX\_formname'.
 You can use the value of this field to switch tpls in the frontend by using ``` &tpl=`@FIELD:MIGX_formname` ``` and create chunks with the same names as your formnames or you can add an additional field (listbox-TV with name tpl for example) to choose the output-tpl for this item.
 
 ### Preview Feature
@@ -208,7 +206,7 @@ Once you have filled out the field 'Preview Url' you will have an additional but
 
 ### Inline Editor
 
-To edit fields directly within the MIGX grid, simply add "editor": "this.textEditor" or "editor": "this.listboxEditor" to the Grid Columns JSON of the field you wish to make editable:
+To edit fields directly within the MIGX grid, simply add `"editor": "this.textEditor"` or `"editor": "this.listboxEditor"` to the Grid Columns JSON of the field you wish to make editable:
 
 ``` json
 {"header": "Title", "width": "160", "sortable": "true", "dataIndex": "title", "editor": "this.textEditor"}
