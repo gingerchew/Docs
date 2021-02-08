@@ -32,7 +32,7 @@ Let's display some images that we input in Step 3. Paste this code wherever you 
 </ul>
 ```
 
-Let's break this down. The first parameter, `&tvname`, refers to the name of the MIGX TV that we created in Backend Usage, Step 2. `&tpl` refers to either a code string for which to use with the MIGX items or the name of a chunk. If you're using a code string, make sure to prepend the code as above with @CODE.
+Let's break this down. The first parameter, `&tvname`, refers to the name of the MIGX TV that we created in Backend Usage, Step 2. `&tpl` refers to either a code string for which to use with the MIGX items or the name of a chunk. If you're using a code string, make sure to prepend the code as above with `@CODE:`.
 
 If you're using [phpthumbof](extras/phpthumbof "phpThumbOf"), you will need to use a chunk and not a code string.
 
@@ -104,38 +104,38 @@ Here's another [example from the forum post](http://forums.modx.com/thread/78950
 
 | Name                                                                                                       | Description                                                                                                                                           | Default   |
 | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| tvname                                                                                                     | the Name of your MIGX-TV                                                                                                                              |           |
-| tpl                                                                                                        | chunkname to render each record. You can also use @CODE: or @FILE: if empty, getImageList will output an array-string of the records                  |           |
-| docid                                                                                                      | if you want to show MIGX-records from other resources. Usefull in [getResources](extras/getresources "getResources")-tpls with ``` &docid=`[[+id]]` ```     | `[[*id]]` |
-| value                                                                                                      | if you want to send your own JSON-string to getImageList instead of using the TV-output. tvname and docid are ignored then.                           |           |
+| tvname                                                                                                     | The name of your MIGX-TV                                                                                                                              |           |
+| tpl                                                                                                        | The name of the chunk to render each record. You can also use `@CODE:` or `@FILE:`. If empty, getImageList will output an array-string of the records.                |           |
+| docid                                                                                                      | Show MIGX-records from other resources. Usefull in [getResources](extras/getresources "getResources")-tpls with `` &docid=`[[+id]]` ``     | `[[*id]]` |
+| value                                                                                                      | Send your own JSON-string to getImageList instead of using the TV output. `tvname` and `docid` are ignored.                           |           |
 | limit                                                                                                      | If set to non-zero, will only show X number of items.                                                                                                 | 0         |
 | offset                                                                                                     | The index to start grabbing from when limiting the number of items.                                                                                   | 0         |
-| totalVar                                                                                                   | the key for the total-placeholder, usefull together with [getPage](extras/getpage "getPage") for pagination.                                          | total     |
-| randomize                                                                                                  | set `` &randomize=`1` `` if you want randomized output                                                                                                      | 0         |
-| preselectLimit                                                                                             | together with `&randomize`, this will preselect items from top to limit, for images you want to see in any case in randomized output                     | 5         |
-| where                                                                                                      | filter items. example: `{"active:=":"1","rating:>":"5"}`                                                                                              |
-| sort                                                                                                       | sort items by multiple fields. example: `[{"sortby":"age","sortdir":"DESC","sortmode":"numeric"},{"sortby":"name","sortdir":"ASC"}]`                  |
-| reverse                                                                                                    | set `` &reverse=`1` `` to output everything in reverse order                                                                                                  | 0         |
-| toPlaceholder                                                                                              | outputs to placeholder. example: `` &toPlaceholder=`MIGX` `` - get the output by `[[+MIGX]]`                                                                |           |
-| toSeparatePlaceholders                                                                                     | outputs items to seperate placeholders. example: `` &toSeparatePlaceholders=`MIGX` `` - get the items by `[[+MIGX.1]]` `[[+MIGX.2]]` ......                 |           |
-| placeholdersKeyField                                                                                       | together with `&toSeparatePlaceholders`. example: `` &placeholdersKeyField=`title` `` - get the items by `[[+MIGX.firsttitle]]` `[[+MIGX.thirdtitle]]` ...... |           |
-| outputSeparator                                                                                            | a seperator between items                                                                                                                             |           |
-| toJsonPlaceholder                                                                                          | output items as json into a placeholder, useful when you want for example show randomized items on different places.                                 |
-| example: ``` &toJsonPlaceholder=`jsonoutput` -> `[[getImagelist? &value=``[[+jsonoutput]]``................]]` ``` |                                                                                                                                                       |
-| jsonVarKey                                                                                                 | example: `` &jsonVarKey=`migx_json` `` - this will use the value from `$_REQUEST['migx_json']` as value, if any                                           |
+| totalVar                                                                                                   | The key for the total-placeholder, useful together with [getPage](extras/getpage "getPage") for pagination.                                          | total     |
+| randomize                                                                                                  | Set `` &randomize=`1` `` if you want randomized output.                                                                                                      | 0         |
+| preselectLimit                                                                                             | Together with `&randomize`, this will preselect items from top to limit, for images you want to see in any case in randomized output.                     | 5         |
+| where                                                                                                      | Filter items. Example: `{"active:=":"1","rating:>":"5"}`                                                                                              |
+| sort                                                                                                       | Sort items by multiple fields. Example: `[{"sortby":"age","sortdir":"DESC","sortmode":"numeric"},{"sortby":"name","sortdir":"ASC"}]`                  |
+| reverse                                                                                                    | Set `` &reverse=`1` `` to output everything in reverse order.                                                                                                  | 0         |
+| toPlaceholder                                                                                              | Outputs to placeholder. Example: `` &toPlaceholder=`MIGX` `` - get the output by `[[+MIGX]]`                                                                |           |
+| toSeparatePlaceholders                                                                                     | Outputs items to seperate placeholders. Example: `` &toSeparatePlaceholders=`MIGX` `` - get the items by `[[+MIGX.1]]`, `[[+MIGX.2]]`, etc.                  |           |
+| placeholdersKeyField                                                                                       | Together with `&toSeparatePlaceholders`. Example: `` &placeholdersKeyField=`title` `` - get the items by `[[+MIGX.firsttitle]]`, `[[+MIGX.secondtitle]]`, etc. |           |
+| outputSeparator                                                                                            | A seperator between items                                                                                                                             |           |
+| toJsonPlaceholder                                                                                          | Output items as json into a placeholder, useful when you want for example show randomized items on different places.                                 |
+| example: `` &toJsonPlaceholder=`jsonoutput` `` -> `` [[getImagelist? &value=`[[+jsonoutput]]` ... ]] ``  |                                                                                                                                                       |
+| jsonVarKey                                                                                                 | Example: `` &jsonVarKey=`migx_json` `` - will use the value from `$_REQUEST['migx_json']` as value, if any                                           |
 | useful together with the backend-preview-feature                                                           | migx\_outputvalue                                                                                                                                     |
 
 ## Placeholders
 
 | Placeholder          | Description                                                                                                                                                             |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[[+fieldname]]`     | replace 'fieldname' with your fieldnames                                                                                                                                |
-| `[[+idx]]`           | the index of each item, begins allways with 1                                                                                                                           |
-| `[[+_first]]`        | returns 1, if in first row                                                                                                                                              |
-| `[[+_last]]`         | returns 1, if in last row                                                                                                                                               |
-| `[[+_alt]]`          | returns 1 every second row                                                                                                                                              |
-| `[[+total]]`         | count of all rows, replace 'total' with your totalVar                                                                                                                   |
-| `[[+property.name]]` | you can use every script property/param that's set in the actual snippet call, for example if you have `` &docid=`20` `` the placeholder `[[+property.docid]]` will return 20 |
+| `[[+fieldname]]`     | Replace 'fieldname' with your fieldnames                                                                                                                                |
+| `[[+idx]]`           | The index of each item, begins allways with 1                                                                                                                           |
+| `[[+_first]]`        | Returns 1, if in first row                                                                                                                                              |
+| `[[+_last]]`         | Returns 1, if in last row                                                                                                                                               |
+| `[[+_alt]]`          | Returns 1 every second row                                                                                                                                              |
+| `[[+total]]`         | Count of all rows, replace 'total' with your totalVar                                                                                                                   |
+| `[[+property.name]]` | You can use every script property/param that's set in the actual snippet call, for example if you have `` &docid=`20` `` the placeholder `[[+property.docid]]` will return 20 |
 
 ## Advanced Usage
 
@@ -150,4 +150,4 @@ Using `` &tpl=`@FIELD:` `` you can use any field as the template name to switch 
 ]]
 ```
 
-If you have specified a field name "tpl" from the MIGX TV setup, getImageList will use the value of this field for the items's tpl. The value must be exactly what you would put in the &tpl property - a chunk name, @CODE:... @FILE...
+If you have specified a field name "tpl" from the MIGX TV setup, getImageList will use the value of this field for the items's tpl. The value must be exactly what you would put in the `&tpl` property - a chunk name, `@CODE:...`, `@FILE:...`.
