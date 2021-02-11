@@ -14,7 +14,7 @@ Each complex data item can have multiple fields associated with it. These fields
 
 ## Creating your first MIGX TV
 
-Sample MIGX configurations are stored under /core/components/migx/examples/. We will be referring to "tabs.txt" for this documentation page. This documentation page assumes that you have the add-on TinyMCE installed.
+Sample MIGX configurations are stored under /core/components/migx/examples/. We will be referring to `tabs.txt` for this documentation page. This documentation page assumes that you have the add-on TinyMCE installed.
 
 The file tabs.txt shows a sample implementation of a simple image gallery. The image gallery will consist of one complex data item that uses one richtext field (an image description), one image field (the image itself), and a short string (a caption). This short string will not be stored in a separate TV.
 
@@ -34,7 +34,7 @@ For your first MIGX TV, we are only concerned with two textarea fields: "Form Ta
 
 The Form Tabs define the structure that end users will use to input their data.
 
-Content of tabs.txt:
+Content of `tabs.txt`:
 
 ``` json
 [{
@@ -59,15 +59,15 @@ Content of tabs.txt:
 }]
 ```
 
-That's a lot of JSON -- let's break it down. The first key you see is entitled "Caption". This refers to the name of the first tab. The tab will be labeled "Info".
+That's a lot of JSON -- let's break it down. The first key you see is entitled `caption`. This refers to the name of the first tab. The tab will be labeled "Info".
 
-The second key you see is entitled "fields". This refers to each of the fields that will be accessible from that tab. The fields are stored as a nested JSON string. Let's break these down.
+The second key you see is entitled `fields`. This refers to each of the fields that will be accessible from that tab. The fields are stored as a nested JSON string. Let's break these down.
 
-The first key within the nested JSON string is entitled "field". This refers to the placeholder that MIGX will generate that we will access later with getImageList. For the first item, we have labeled it "title". This refers to the short string mentioned above. The second key is labeled "caption". This refers to the label that the end user will see when they're filling in a data item. Let's label it "Title" so that our users know they're filling in the title of the image.
+The first key within the nested JSON string is entitled `field`. This refers to the placeholder that MIGX will generate that we will access later with getImageList. For the first item, we have labeled it "title". This refers to the short string mentioned above. The second key is labeled `caption`. This refers to the label that the end user will see when they're filling in a data item. Let's label it "Title" so that our users know they're filling in the title of the image.
 
-The second key within the nested JSON string is entitled "description". We have three keys this time: the first, "field", refers to the placeholder that we will access later. The second, "caption", is the label the user will see. The third, "inputTVtype", refers to the type of field that we want to use.
+The second key within the nested JSON string is entitled "description". We have three keys this time: the first, `field`, refers to the placeholder that we will access later. The second, `caption`, is the label the user will see. The third, `inputTVtype`, refers to the type of field that we want to use.
 
-We're done with the first nested JSON string. We can now see that there is a second tab -- this one has a label of "Image" and specified an inputTVtype of "image". To specify a Media Source for the image, add another key `"sourceFrom":"migx"` and, using the Media Sources tab, assign a media source to the MIGx TV.
+We're done with the first nested JSON string. We can now see that there is a second tab -- this one has a label of "Image" and specified an `inputTVtype` of "image". To specify a Media Source for the image, add another key `"sourceFrom":"migx"` and, using the Media Sources tab, assign a media source to the MIGx TV.
 
 We are now halfway done with our first MIGX TV. We have now created the form for each of the individual data items. The keys for each field are listed below in a table for your viewing convenience. Let's now define the summary view of the data items using Grid Columns in Step 3.2
 
@@ -85,7 +85,7 @@ We are now halfway done with our first MIGX TV. We have now created the form for
 
 In the grid columns, we're specifying the summary view that users will see to view their information.
 
-Content of columns.txt:
+Content of `columns.txt`:
 
 ``` json
 [{
@@ -104,9 +104,9 @@ Content of columns.txt:
 
 Here is some more JSON for us to tackle! This JSON shows the caption of the image as well as a preview of it. Let's break it down.
 
-The first key, "header", refers to the header label that will be used to categorize the fourth key, "dataIndex". The dataIndex refers to the placeholder that we've specified above in the form tabs. The first entry here uses the dataIndex we specified above of "title". We also have two more keys: width and sortable. The width defines the relative width of the column, and sortable defines whether the grid is sortable by that column.
+The first key, `header`, refers to the header label that will be used to categorize the fourth key, `dataIndex`. The `dataIndex` refers to the placeholder that we've specified above in the form tabs. The first entry here uses the `dataIndex` we specified above of `title`. We also have two more keys: `width` and `sortable`. The `width` defines the relative width of the column, and `sortable` defines whether the grid is sortable by that column.
 
-The second entry has a fifth key: renderer. This key allows us to render a view of the image here.
+The second entry has a fifth key: `renderer`. This key allows us to render a view of the image here.
 
 We're now done specifying our first MIGX TV. Feels great, right? Make sure you click save.
 
@@ -121,7 +121,7 @@ The keys for this grid are listed here:
 | header    | The caption of the column                                                                                                                                                                      |
 | sortable  | If the columns is sortable by clicking the header                                                                                                                                              |
 | dataIndex | The field, you want to render into this column                                                                                                                                                 |
-| renderer  | You can use a renderer for each column. For example the included function "this.renderImage". This will render an image-preview in the grid-cell, if you are using an image-TV for this field. |
+| renderer  | You can use a renderer for each column. For example the included function `this.renderImage`. This will render an image-preview in the grid-cell, if you are using an image-TV for this field. |
 
 ## Advanced MIGX Configuration
 
@@ -189,8 +189,8 @@ Here we have an additional outer array with two keys.
 | formname | Give each form an unique name. This is the value, which you will see in the generated dropdown to switch the form |
 | formtabs | This are the formtabs for this form                                                                               |
 
-When using multiple forms this will produce an additional field with name 'MIGX\_formname'.
-You can use the value of this field to switch tpls in the frontend by using ``` &tpl=`@FIELD:MIGX_formname` ``` and create chunks with the same names as your formnames or you can add an additional field (listbox-TV with name tpl for example) to choose the output-tpl for this item.
+When using multiple forms this will produce an additional field with name `MIGX_formname`.
+You can use the value of this field to switch tpls in the frontend by using `` &tpl=`@FIELD:MIGX_formname` `` and create chunks with the same names as your `formname` or you can add an additional field (listbox-TV with name tpl for example) to choose the output-tpl for this item.
 
 ### Preview Feature
 
@@ -201,7 +201,7 @@ MIGX has a preview featured that allows you to see rendered output of items in a
 [[!getImageList? &tvname=`multiitemsgridTv2`]]
 ```
 
-If you have multiple calls on the preview resource you will also need unique values for each TV in 'Preview JsonVarKey' - default is 'migx\_outputvalue'
+If you have multiple calls on the preview resource you will also need unique values for each TV in 'Preview JsonVarKey' - default is `migx_outputvalue`
 
 Once you have filled out the field 'Preview Url' you will have an additional button 'Preview' on your MIGX-TV, which shows the preview window with content of your preview resource.
 
