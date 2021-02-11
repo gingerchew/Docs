@@ -78,7 +78,7 @@ We are now halfway done with our first MIGX TV. We have now created the form for
 | description | This is the description in your form, if empty MIGX will use the description of the inputTV, if any.                                                                                                                                                                                                                               |
 | inputTV     | Pick either this or "inputTVtype". If you use this, specify the name of the TV that you would like to use. This is useful if your data type requires any custom functionality (ie, a default value, output options, etc). You can use the same input TV for different fields (ie, if you have an object that has multiple images). |
 | inputTVtype | Pick either this or "inputTV". If you use this, specify the name of the TV type that you would like to use. This is useful if your data type does not require any custom functionality.                                                                                                                                            |
-| sourceFrom  | Add a media source using the Media Sources tab in the MIGX TV and enter 'migx'. You can also enter 'config'. |
+| sourceFrom  | Add a media source using the Media Sources tab in the MIGX TV and enter 'migx'. |
 
 #### Step 2.2 Grid Columns
 
