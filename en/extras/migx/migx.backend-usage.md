@@ -47,8 +47,7 @@ Content of tabs.txt:
         "field": "description",
         "caption": "Description",
         "inputTVtype": "richtext"
-      }
-    ]
+    }]
   },
   {
     "caption": "Image",
@@ -68,17 +67,19 @@ The first key within the nested JSON string is entitled "field". This refers to 
 
 The second key within the nested JSON string is entitled "description". We have three keys this time: the first, "field", refers to the placeholder that we will access later. The second, "caption", is the label the user will see. The third, "inputTVtype", refers to the type of field that we want to use.
 
-We're done with the first nested JSON string. We can now see that there is a second tab -- this one has a label of "Image" and specified an inputTVtype of "image". To specify a Media Source for the image, add another key "sourceFrom":"migx" and assign the MIGx TV to a media source using the TV's Media Sources tab.
+We're done with the first nested JSON string. We can now see that there is a second tab -- this one has a label of "Image" and specified an inputTVtype of "image". To specify a Media Source for the image, add another key `"sourceFrom":"migx"` and, using the Media Sources tab, assign a media source to the MIGx TV.
 
 We are now halfway done with our first MIGX TV. We have now created the form for each of the individual data items. The keys for each field are listed below in a table for your viewing convenience. Let's now define the summary view of the data items using Grid Columns in Step 3.2
 
 | Key         | Description                                                                                                                                                                                                                                                                                                                        |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| field       | This is the name for your placeholder to use with getImageList and a template                                                                                                                                                                                                                                                      |
-| caption     | This will be the caption in your form for the end user to see                                                                                                                                                                                                                                                                      |
-| description | This is the description in your form, if empty MIGX will use the description of the inputTV, if any                                                                                                                                                                                                                                |
+| field       | This is the name for your placeholder to use with getImageList and a template.                                                                                                                                                                                                                                                     |
+| caption     | This will be the caption in your form for the end user to see.                                                                                                                                                                                                                                                                     |
+| description | This is the description in your form, if empty MIGX will use the description of the inputTV, if any.                                                                                                                                                                                                                               |
 | inputTV     | Pick either this or "inputTVtype". If you use this, specify the name of the TV that you would like to use. This is useful if your data type requires any custom functionality (ie, a default value, output options, etc). You can use the same input TV for different fields (ie, if you have an object that has multiple images). |
 | inputTVtype | Pick either this or "inputTV". If you use this, specify the name of the TV type that you would like to use. This is useful if your data type does not require any custom functionality.                                                                                                                                            |
+| sourceFrom  | Add a media source using the Media Sources tab in the MIGX TV and enter 'migx'. You can also enter 'config'. |
+| sources     | Enter a valid escaped JSON configuration string to configure the media source. Useful for multiple contexts. Easier to implement using MIGX-configurator-CMP |
 
 #### Step 2.2 Grid Columns
 
