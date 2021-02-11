@@ -127,7 +127,7 @@ The keys for this grid are listed here:
 
 ### Multiple Forms
 
-Content of switchFormTabs.txt
+Content of `switchFormTabs.txt`
 
 ``` json
 [
